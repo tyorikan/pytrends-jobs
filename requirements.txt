@@ -1,0 +1,4 @@
+pytrends==4.9.2
+pandas==2.1.1
+gspread==5.11.2
+oauth2client==4.1.3
