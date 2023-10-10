@@ -31,7 +31,9 @@ scope = [
     'https://www.googleapis.com/auth/spreadsheets',
     'https://www.googleapis.com/auth/drive'
 ]
-creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
+client_secret_path = os.getenv("SECRET_DIR", ".")
+print(client_secret_path + '/client_secret.json') 
+creds = ServiceAccountCredentials.from_json_keyfile_name(client_secret_path + '/client_secret.json', scope)
 client = gspread.authorize(creds)
 
 # ファイルを作成
