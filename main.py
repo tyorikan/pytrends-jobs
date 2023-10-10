@@ -9,7 +9,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 pytrends = TrendReq(hl='ja-JP', tz=360)
 
 # トレンドを取得したいキーワードを設定
-keywords = ["Pixel8"]
+keywords = os.getenv("KEYWORDS", "Google").split(",")
 
 # Googleトレンドデータを取得
 pytrends.build_payload(keywords, timeframe='now 7-d')
