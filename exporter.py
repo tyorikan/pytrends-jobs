@@ -11,7 +11,7 @@ table = os.environ.get("TABLE")
 table_id = '{}.{}.{}'.format(project_id, dataset, table)
 
 query = """
-    SELECT keyword, query, value, datetime
+    SELECT keyword, query, value, FORMAT_DATETIME("%c", datetime) as datetime
     FROM `{}`
     WHERE type = 'rising'
     ORDER BY datetime, value DESC
@@ -49,4 +49,4 @@ sample_sheet = client.open(file_name).add_worksheet(title="SAMPLE", rows=0, cols
 
 # Google Sheetsに出力
 for row in query_job:
-    sample_sheet.add_rows(row)
+    sample_sheet.append_row(row.values())
